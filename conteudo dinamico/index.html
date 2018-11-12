@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		//O QUE ACONTECE QUANDO PRONTO
+
+		$.getJSON('dados.json', function(itens){
+			itens.forEach(item=>{
+				$("#meio").append("<h2>"+item.titulo+"</h2>");
+				$("#meio").append("<img src=\""+item.titulo+"\">");
+				$("#meio").append("<p>"+item.descricao+"</p>");
+			})
+		});
+
+
+		$("#ocultar").click(function(){
+			//Ao clicar em alguem com ID ocultar, deve esconder alguem com id meio
+			$("#meio").hide("slow");//ocultar
+		});
+		$("#mostrar").click(function(){
+			$("#meio").show("slow");//exibir
+		});
+		$("#meio h3").click(function(){
+			$("#meio p").text("Novo texto");
+		});
+	});
+	</script>
+</head>
+<body>
+	<h1>Exercício jQuery</h1>
+	<p>Primeiro parágrafo</p>
+	<div id="meio">
+		<h3>Titulo</h3>
+		<p>Segundo parágrafo</p>
+	</div>
+	<p>Terceiro parágrafo</p>
+	<button id="ocultar">Ocultar</button>
+	<button id="mostrar">Mostrar</button>
+	<button id="alternar">Alternar</button>
+</body>
+</html>
